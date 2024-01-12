@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { TodoForm } from './TodoForm'
 import { Todo } from './Todo'
 import { v4 as uuidv4 } from 'uuid'
+
 uuidv4();
 
 export const TodoWrapper = () => {
@@ -14,6 +15,9 @@ export const TodoWrapper = () => {
         ]);
         console.log(todos);
     }
+
+    const deleteTodo = (id) => setTodos(todos.filter((todo) => todo.id !== id));
+
 
     const toggleComplete = (id) => {
         setTodos(
@@ -31,6 +35,7 @@ export const TodoWrapper = () => {
                     key={index}
                     todo={todo}
                     toggleComplete={toggleComplete}
+                    deleteTodo={deleteTodo}
                 />
             ))}
         </div>
